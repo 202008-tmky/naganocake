@@ -72,5 +72,3 @@ gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 
 gem 'pry-rails'
-
-gem 'enum_help'
