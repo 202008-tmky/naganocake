@@ -1,2 +1,26 @@
-<h1>Admins::Items#new</h1>
-<p>Find me in app/views/admins/items/new.html.erb</p>
+<div class="container">
+    <div class="row">
+
+			<h1>商品新規登録</h1>
+			<%= form_for @items, url: admins_items_path do |f| %>
+    	    <div class="col-xs-5">
+			  <%= f.attachment_field :image %>
+		    </div>
+
+         	<div class="col-xs-7">
+			        <h3>商品名</h3>
+					<%= f.text_field :name %>
+					<h3>商品説明</h3>
+					<%= f.text_field :introduction %>
+					<h3>ジャンル</h3>
+					<%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %>
+
+					<h3>税抜価格</h3>
+					<%= f.text_field :price %>
+					<h3>販売ステータス</h3>
+					<%= f.select :is_active, [["販売中", "true"], ["売り切れ", "false"]], include_blank: "選択して下さい" %>
+					<br><%= f.submit '新規登録', class:"btn btn-primary" %></br>
+			</div>
+			<% end %>
+	</div>
+</div>
