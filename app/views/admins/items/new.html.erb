@@ -4,10 +4,8 @@
 			<h1>商品新規登録</h1>
 			<%= form_for @items, url: admins_items_path do |f| %>
 			  <%= f.attachment_field :image %>
-			
 		</div>
 		<div class="col-xs-7">
-			
 			        <h3>商品名</h3>
 					<%= f.text_field :name %>
 					<h3>商品説明</h3>
