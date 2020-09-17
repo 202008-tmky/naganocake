@@ -1,5 +1,7 @@
 class Admins::ItemsController < ApplicationController
   def show
+    @item = Item.find(params[:id])
+
   end
 
   def index
@@ -24,7 +26,6 @@ class Admins::ItemsController < ApplicationController
   	@item = Item.find(params[:id])
   	@item.update(item_params)
   	redirect_to admins_item_path(@item)
-  end
 
   private
 
