@@ -9,7 +9,9 @@ Admin.create!(
 	email: 'test@test.com',
 	password: 'testtest'
 	)
-10.times do |n|
+
+50.times do |n|
+
   Customer.create!(
                    email: "test#{n + 1}@test.com",
                    last_name: "文月#{n}",
@@ -41,4 +43,6 @@ Admin.create!(
                   is_active: true,
                   image: open("./app/assets/images/anpan.jpg")
                    )
+
 end
+

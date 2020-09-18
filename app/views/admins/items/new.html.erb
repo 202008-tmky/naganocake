@@ -1,11 +1,14 @@
 <div class="container">
     <div class="row">
-    	<div class="col-xs-5">
+
 			<h1>商品新規登録</h1>
 			<%= form_for @items, url: admins_items_path do |f| %>
+      
+    	<div class="col-xs-5">
 			  <%= f.attachment_field :image %>
-		</div>
-		<div class="col-xs-7">
+		  </div>
+
+      <div class="col-xs-7">
 			        <h3>商品名</h3>
 					<%= f.text_field :name %>
 					<h3>商品説明</h3>
@@ -18,8 +21,9 @@
 					<h3>販売ステータス</h3>
 					<%= f.select :is_active, [["販売中", "true"], ["売り切れ", "false"]], include_blank: "選択して下さい" %>
 					<br><%= f.submit '新規登録', class:"btn btn-primary" %></br>
+
+			</div>
 			<% end %>
-		</div>
 	</div>
 </div>
 
