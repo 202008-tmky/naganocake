@@ -1,2 +1,43 @@
-<h1>Items#top</h1>
-<p>Find me in app/views/items/top.html.erb</p>
+<div class="container">
+	<dev class="row">
+
+        <!-- ジャンル選択のサイドバー -->
+		<%= render "items/genres_sidebar", genres: @genres %>
+        <!-- ジャンル選択のサイドバー -->
+
+		<div class="col-lg-10">
+			<!-- トップ画像 -->
+			<div class="top-image">
+                <div class="cover-text">
+				    <p>
+					  ようこそ、NaganoCakeへ！<br>
+                      このサイトは、ケーキ販売のECサイトになります。<br>
+                      会員でない方も商品の閲覧はできますが、<br>
+                      購入には会員登録が必要になります。<br>
+                    </p>
+                </div>
+            </div>
+            <!-- トップ画像 -->
+
+            <!-- オススメ商品4つずつ表示 -->
+            <h3>オススメ商品</h3>
+            <table>
+            	<tbody>
+            		<tr>
+            			<% @items.each do |item| %>
+                              <td><%= link_to item_path(item) do %>
+                              	  <%= attachment_image_tag(item, :image, size: "40×60", fallback:"top.image.jpg") %><br>
+            			          <%= item.name %><br>
+            			          ￥<%= item.price %>
+            			          <% end %>
+            			      </td>
+            			<% end %>
+            		</tr>
+            	</tbody>
+            </table>
+            <%= paginate @items %>
+            <!-- オススメ商品4つずつ表示 -->
+
+        </div>
+    </div>
+</div>
