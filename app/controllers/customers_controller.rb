@@ -13,6 +13,10 @@ class CustomersController < ApplicationController
   end
 
   def withdraw
+  	@customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to customer_top_path, info: 'ありがとうございました。またのご利用を心よりお待ちしております。'
   end
 
   def unsubscribe
