@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'customers/:id/regisration' => 'customers#regisration', as: 'customer_unregisration'
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
     put "/customers/:id/withdraw" => "customers#withdraw", as: 'customers_withdraw'
-  
+
   resources :orders, only: [:new, :index, :create, :show]
      post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
      get 'orders/thanks' => 'orders#thanks', as: 'order_thanks'
