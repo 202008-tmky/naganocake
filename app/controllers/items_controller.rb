@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
+
   def top
+  	@genres = Genre.all
+  	@items = Item.all.page(params[:page]).per(4)
   end
 
   def index
@@ -7,4 +10,5 @@ class ItemsController < ApplicationController
 
   def show
   end
+
 end
