@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'items/about' => 'items#about', as: 'customer_about'
 
   resources :customers, only: [:edit, :show, :update]
-    get 'customers/:id/regisration' => 'customers#regisration', as: 'customer_unregisration'
+    get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'customer_unsubscribe'
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
     put "/customers/:id/withdraw" => "customers#withdraw", as: 'customers_withdraw'
 
