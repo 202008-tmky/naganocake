@@ -10,6 +10,7 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @customer = current_customer
   end
 
   def withdraw
@@ -21,7 +22,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-  	params.require(:customer).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :is_deleted, :e-mail, :postal-code, :address, :telephone_number, )
+  	params.require(:customer).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :is_deleted, :address, :postal_code, :address, :telephone_number, :is_deleted)
   end
 
 end
