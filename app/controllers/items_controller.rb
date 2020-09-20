@@ -9,6 +9,10 @@ class ItemsController < ApplicationController
   end
 
   def show
+  	@genres = Genre.all
+  	@item = Item.find(params[:id])
+  	@cart = @item.cart_items.build
   end
+
 
 end

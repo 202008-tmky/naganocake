@@ -1,2 +1,50 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<h3>ショッピングカート</h3>
+<%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: 'btn btn-danger' %>
+
+<h4>商品名</h4>
+<h4>単価（税込）</h4>
+<h4>数量</h4>
+<h4>小計</h4>
+
+<% sum_all = 0 %>
+<% @cart_items.each do |cart_item| %>
+
+	<%= link_to item_path(cart_item.item) do %>
+	<%= attachment_image_tag(cart_item.item, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
+	<% end %>
+
+
+	<%= link_to item_path(cart_item.item) do %>
+	<%= cart_item.item.name %>
+	<% end %>
+
+
+	<%= (cart_item.item.price*1.1).to_i %>
+
+
+
+	<%= form_with model: cart_item, local: true do |f| %>
+	<%= f.number_field :amount, value: cart_item.amount, min:1, max:99 %>
+	<%= f.submit "変更", class: "btn btn-primary" %>
+	<% end %>
+
+
+
+	<%= sum_item = (cart_item.item.price).to_i * cart_item.amount %>円
+	<%= sum_all += sum_product %>
+
+
+	<%= link_to "削除する", cart_item_path(cart_item), method:delete, class: "btn btn-danger" %>
+
+<% end %>
+
+
+	<%= link_to "買い物を続ける", customer_top_path, class: "btn btn-danget" %>
+
+	<h4>合計金額:<%= sum_all %>円</h4>
+
+
+
+	<%= link_to "情報入力に進む", new_order_path, class: "btn btn-danger btn-lg" %>
+
+	
