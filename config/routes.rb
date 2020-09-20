@@ -18,9 +18,9 @@ Rails.application.routes.draw do
 
 
   root'items#top'
-  resources :items, only: [:index, :show]
   get 'items/top' => 'items#top', as: 'customer_top'
   get 'items/about' => 'items#about', as: 'customer_about'
+  resources :items, only: [:index, :show]
 
   resources :customers, only: [:edit, :show, :update]
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'customer_unsubscribe'
