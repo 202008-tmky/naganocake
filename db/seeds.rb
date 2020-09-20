@@ -14,10 +14,10 @@ Admin.create!(
 
   Customer.create!(
                    email: "test#{n + 1}@test.com",
-                   last_name: "文月#{n}",
-                   last_name_kana: "フミヅキ#{n}",
-                   first_name: "太郎#{n}",
-                   first_name_kana: "タロウ#{n}",
+                   first_name: "文月#{n}",
+                   first_name_kana: "フミヅキ#{n}",
+                   last_name: "太郎#{n}",
+                   last_name_kana: "タロウ#{n}",
                    postal_code: "1111111",
                    address: "横岡県氷川市絵向寺#{n}丁目",
                    telephone_number: "11111111111",
@@ -43,6 +43,28 @@ Admin.create!(
                   is_active: true,
                   image: open("./app/assets/images/anpan.jpg")
                    )
+   Order.create!(
+				    customer_id: 1,
+				    postal_code: "111111",
+				    address: "遊明県鳥窪町",
+				    name: "文月花子#{n}",
+				    shipping_cost: 600,
+				    total_payment: 3000,
+				    status: 1,
+				    payment_method: 1,
+    				)
+     OrderDetail.create!(
+				    order_id: 1,
+				    item_id: 1,
+				    price:600,
+				    amount:4,
+				    making_status: 1,
+    				)
 
 end
+	CartItem.create!(
+   					customer_id: 1,
+   					item_id: 1,
+   					amount: 4,
+   					)
 
