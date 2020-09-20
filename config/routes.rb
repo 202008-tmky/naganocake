@@ -10,7 +10,12 @@ Rails.application.routes.draw do
     resources :items,  only:[:index, :show, :new, :create, :edit, :update]
   end
 
-  devise_for :customers, controllers: {registrations: "customers/registrations"}
+  devise_for :customers, :controllers => {
+    :sessions => 'customers/sessions',
+    :registrations => 'customers/registrations',
+    :passwords => 'customers/passwords'
+   }
+
 
   root'items#top'
   resources :items, only: [:index, :show]
