@@ -1,2 +1,17 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+
+
+<%= render "items/genres_sidebar", genres: @genres %>
+
+<%= attachment_image_tag(@item, :image, size: "60×60", fallback: "no_image.jpg") %>
+
+<p>商品名<%= @item.name %></p>
+<p>商品説明<%= @item.introduction %></p>
+<p>ジャンル<%= @item.genre.name %></p>
+<p>税込価格<%= (@item.price*1.1).to_i %>円</p>
+
+
+<%= form_with(model: [@item, @cart], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>
+	<%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+	<%= f.hidden_field :item_id, value: @item.id %>
+	<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+<% end %>

@@ -5,10 +5,25 @@ class ItemsController < ApplicationController
   	@items = Item.all.page(params[:page]).per(4)
   end
 
+  def about
+  end
+
   def index
+  	@genres = Genre.all
+  	@items = Item.all.page(params[:page]).per(8)
   end
 
   def show
+  	@genres = Genre.all
+  	@item = Item.find(params[:id])
+  	@cart = @item.cart_items.build
+  end
+
+  private
+
+  def item_params
+  	params.require(:product).permit(:name, :price, :image_id, :genre_id)
   end
 
 end
+

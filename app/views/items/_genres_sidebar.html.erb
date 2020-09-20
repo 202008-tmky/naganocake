@@ -2,7 +2,7 @@
 
     <p><strong>ジャンル検索</strong></p>
 
-    <% genres.each do |genre| %>
+    <% @genres.each do |genre| %>
         <%= link_to genre.name, items_path(genre_id: genre.id) %>
 	<% end %>
 
