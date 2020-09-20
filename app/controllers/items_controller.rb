@@ -14,5 +14,11 @@ class ItemsController < ApplicationController
   	@cart = @item.cart_items.build
   end
 
+  private
+
+  def item_params
+  	params.require(:product).permit(:name, :price, :image_id, :genre_id)
+  end
 
 end
+

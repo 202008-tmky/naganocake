@@ -9,8 +9,8 @@ class CartItemsController < ApplicationController
 
   def create
   	@cart_item = current_customer.cart_items.build(cart_item_params)
-  	@current_item = CartItem.find_by(item_id: @cart_item.item_id,customer_id: @cart_item.customer_id)
-  	if @current_item.nill?
+  	@current_item = CartItem.find_by(item_id: @cart_item.item_id, customer_id: @cart_item.customer_id)
+  	if @current_item.nil?
   		if @cart_item.save
   			flash[:success] = 'カートに商品が追加されました！'
   			redirect_to cart_items_path
