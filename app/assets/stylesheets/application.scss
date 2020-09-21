@@ -15,3 +15,12 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+table.table table-striped table-bordered th,
+table.table table-striped table-bordered td{
+
+  width:100%;
+
+  display:block;
+
+}
