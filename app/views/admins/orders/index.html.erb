@@ -1,2 +1,60 @@
-<h1>Admins::Orders#index</h1>
-<p>Find me in app/views/admins/orders/index.html.erb</p>
+<div class="container">
+	<div class="row">
+
+		<div class="col-lg-1">
+		</div>
+
+		<div class="col-lg-10">
+			<h3>注文履歴一覧</h3>
+			<br>
+			<table class="table table-striped">
+				<thead>
+				<tr>
+						<th>購入日時</th>
+						<th>購入者</th>
+						<th>注文個数</th>
+						<th>注文ステータス</th>
+				</tr>
+			    </thead>
+
+			    <tbody>
+				<tr>
+
+                    <% @orders.each do |order| %>
+                        <tr>
+						    <td>
+						    	<%= link_to admins_order_path(order) do %>
+						    	<%= l order.created_at %>
+						    	<% end %>
+						    </td>
+
+						    <td><%= order.name %></td>
+
+						    <!-- 注文個数の合計を表示する書き方(パターン①) -->
+						    <!-- 「.」で、取り出したいデータがある親モデルと子モデルを繋ぐ
+						    	→「.sum」で合計値を求める
+						    	→「(:カラム名)で何を求めるのかを示す」 -->
+						    <td><%= order.order_details.sum(:amount) %></td>
+
+                    <!-- 注文個数の合計を表示する書き方(パターン②)
+                    	each do　を二つ使用する方法(非推奨)
+						        <% order_details_sum = 0 %>
+						        <% order.order_details.each do |order_detail| %>
+                                    <% order_details_sum = order_details_sum + order_detail.amount %>
+					            <% end %>
+							    <td><%= order_details_sum %></td>
+					-->
+
+						    <td><%= order.status %></td>
+						</tr>
+				    <% end %>
+				</tbody>
+			</table>
+			<%= paginate @orders %>
+		</div>
+
+		<div class="col-lg-1">
+		</div>
+	</div>
+</div>
+
