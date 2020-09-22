@@ -80,10 +80,17 @@ class OrdersController < ApplicationController
   end
 
   def index
+     @customer = current_customer
      @orders = @customer.orders
   end
 
   def show
+     @order = Order.find(params[:id])
+     @sum = 0
+     @order.order_details.each do |detail|
+     @sum = @sum + ((detail.price*1.1).to_i * detail.amount)
+    end
+     @sum
   end
 
    private

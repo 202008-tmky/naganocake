@@ -33,32 +33,30 @@
 
 	<tbody>
 		<%= sum_all = 0 %>
-		<% @order_details.each do |order_detail| %>
-		<tr>
-			<td><%= @order_detail.item.name %></td>
-			<td><%= (@order_detail.price*1.1).to_i %></td>
-			<td><%= @order_detail.amount %></td>
-			<td><%= sum_item = (@order_detail.price*1.1).to_i*(@order_detail.amount) %>
-				<% sum_all += sum_item %>
-			</td>
-			<td>
-				<%= form_with( model: @order_detail, local: true, url: admins_order_detail_path(@order_detail)) do |f| %>
-					<%= f.select :making_status, OrderDetail.making_statuses.keys.to_a %>
-					<%= f.submit "変更する", class: 'btn btn-primary' %>
+
+		<% @order.order_details.each do |detail| %>
+			<tr>
+				<td><%= detail.item.name %></td>
+				<td><%= (detail.price*1.1).to_i %></td>
+				<td><%= detail.amount %></td>
+				<td><%= (detail.price*1.1).to_i * detail.amount %>円</td>
+				<td>
+					<%= form_with model: detail, url: admins_order_detail_path(detail.id), method: :patch do |f| %>
+						<%= f.select :making_status, OrderDetail.making_statuses.keys.to_a %>
+						<%= f.submit "変更する", class: 'btn btn-primary' %>
 				<% end %>
-			</td>
-		</tr>
+				</td>
 		<% end %>
+	
 	</tbody>
 </table>
 
 
 <h4>商品合計</h4>
-<%= sum_all.to_i %>円
+<%= @sum %>円
 
 <h4>送料</h4>
 <%= @order.shipping_cost %>円
 
 <h4>ご請求額</h4>
-   <% billling_amount = sum_all + @order.shipping_cost.to_i %>
-   <%= billling_amount.to_i %>円
+ <%= @sum + @order.shipping_cost %>円

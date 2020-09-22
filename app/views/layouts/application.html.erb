@@ -13,29 +13,31 @@
       <nav class="navbar-header">
          <h1><%= link_to 'NaganoCake', root_path %></h1>
       </nav>
-          <ul class="nav navbar-nav navbar-right">
-          <% if admin_signed_in? %>
-              <li class="nav-item"><%= link_to '商品一覧', admins_items_path %></li>
-              <li class="nav-item"><%= link_to '会員一覧', admins_customers_path %></li>
-              <li class="nav-item"><%= link_to '注文履歴一覧', admins_orders_path %></li>
-              <li class="nav-item"><%= link_to 'ジャンル一覧', admins_genres_path %></li>
-              <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-          <% elsif customer_signed_in? %>
-              <li class="nav-item"><%= link_to 'About', customer_about_path %></li>
-              <li class="nav-item"><%= link_to '商品一覧', items_path %></li>
-              <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
-              <li class="nav-item"><%= link_to 'ログアウト',
-              destroy_customer_session_path, method: :delete %></li>
-          <% else %>
-          <li class="nav-item"><%= link_to 'About', customer_about_path %></li>
-              <li class="nav-item"><%= link_to '商品一覧', items_path %></li>
-              <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
-              <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path %></li>
-          </ul>
-          <% end %>
+      <ul class="nav navbar-nav navbar-right">
+                <% if admin_signed_in? %>
+                    <li class="nav-item"><%= link_to '商品一覧', admins_items_path %></li>
+                    <li class="nav-item"><%= link_to '会員一覧', admins_customers_path %></li>
+                    <li class="nav-item"><%= link_to '注文履歴一覧', admins_orders_path %></li>
+                    <li class="nav-item"><%= link_to 'ジャンル一覧', admins_genres_path %></li>
+                    <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+                <% elsif customer_signed_in? %>
+                    <li class="nav-item"><%= link_to 'About', customer_about_path %></li>
+                    <li class="nav-item"><%= link_to '商品一覧', items_path %></li>
+                    <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
+                    <li class="nav-item"><%= link_to 'ログアウト',
+                    destroy_customer_session_path, method: :delete %></li>
+                <% else %>
+                <li class="nav-item"><%= link_to 'About', customer_about_path %></li>
+                    <li class="nav-item"><%= link_to '商品一覧', items_path %></li>
+                    <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path %></li>
+                    <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path %></li>
+                </ul>
+                <% end %>
       </div>
   </header>
   <body>
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,2 +1,28 @@
-<h1>Addresses#edit</h1>
-<p>Find me in app/views/addresses/edit.html.erb</p>
+<body>
+<div>
+  <!-- 編集フォーム-->
+  <h2>配送先編集</h2>
+
+  <%= form_for(@shipping_address) do |f| %>
+    <table>
+      <tr>
+	    <td>郵便番号（ハイフンなし）</td>
+	    <td><%= f.text_field :postal_code, autofocus: true %></td>
+	  </tr>
+	  <tr>
+	    <td>住所</td>
+	    <td><%= f.text_field :address, autofocus: true %></td>
+	  </tr>
+	  <tr>
+	    <td>宛名</td>
+	    <td><%= f.text_field :name, autofocus: true %></td>
+	  </tr>
+    </table>
+
+    <!-- 編集ボタン -->
+    <%= f.submit "編集する" %>
+  <% end %>
+
+</div>
+
+</body>
