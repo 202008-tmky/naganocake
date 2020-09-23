@@ -6,4 +6,8 @@ class Item < ApplicationRecord
 	has_many :orders, through: :order_details
 	attachment :image
 
+	validates :image, :genre_id, :name, :price, presence: true
+	validates :introduction, length: {maximum: 200}
+	validates :price, numericality: { only_integer: true }
+
 end

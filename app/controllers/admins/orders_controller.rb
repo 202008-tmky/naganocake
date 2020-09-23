@@ -17,7 +17,15 @@ class Admins::OrdersController < ApplicationController
 
   def update
   	@order = Order.find(params[:id])
+    # if文中のeach doに渡す、orderに基づくorder_detailsのデータを取得
+    @order_details = OrderDetail.where(params[:order_id])
   	@order.update(order_params)
+    if @order.status == "入金確認"
+      # 注文ステータスの変更で、それぞれの製作ステータスを変更
+      @order_details.each do |order_detail|
+        order_detail.update(making_status: "製作待ち")
+      end
+    end
   	redirect_back(fallback_location: admins_order_path)
   end
 

@@ -17,7 +17,7 @@ class AddressesController < ApplicationController
            redirect_to addresses_path
         else
             @customer = current_customer
-            @shipping_addresses = @customer.shipping_addresses.all
+            @shipping_addresses = @customer.addresses
             flash[:warning] = "入力内容を確認してください"
             render :index
         end
@@ -47,7 +47,6 @@ class AddressesController < ApplicationController
             redirect_to addresses_path
             flash[:success] =  "更新に成功しました"
         else
-            flash[:warning] = "入力内容を確認してください"
             render :edit
         end
     end

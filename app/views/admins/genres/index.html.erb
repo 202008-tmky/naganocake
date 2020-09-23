@@ -1,8 +1,12 @@
+<%= flash.now[:success] %>
+<%= render "admins/shared/error_messages", resource: @genre %>
+
 <div class="container">
     <div class="row">
 		<h1>ジャンル一覧・追加</h1>
 			　　<h3>ジャンル</h3>
 					<%= form_for @genre, url: admins_genres_path do |f| %>
+
 					<%= f.text_field :name %>
 					<%= f.select :is_active ,[['有効',true],['無効',false]] %>
 					<br><%= f.submit '追加' %></br>
