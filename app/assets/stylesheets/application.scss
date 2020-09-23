@@ -15,12 +15,86 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+	 min-height: 100vh;/*①高さの最小値*/
+  	 position: relative;/*②相対位置*/
+}
+.push {
+   height: 120px;/*フッターと同じ高さに指定*/
+}
 table.table table-striped table-bordered th,
-table.table table-striped table-bordered td{
+table.table table-striped table-bordered td
+{
 
   width:100%;
 
   display:block;
 
+}
+.nav-item1 {
+	margin-top: 50px;
+}
+.customer-show {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.item-box {
+	display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+}
+.item {
+	margin-left: 10px;
+	text-align: center;
+}
+.item-index {
+	text-align: center;
+}
+.item-show-box {
+	width: 100%;
+	display: flex;
+	background-color: #FFAD90;
+}
+.item-show {
+	text-align: center;
+
+}
+td {
+text-align: center;
+}
+.box {
+	border: solid 3px;
+	width: 40%;
+	text-align: center;
+	height: 600px;
+}
+.item-index-box {
+	display: flex;
+	text-align: center;
+}
+footer {
+	width: 100%;
+	height:120px;
+	position:absolute;
+	bottom:0;
+	text-align: center;
+	background-color:#FFFFEE;
+	padding: 50px 0;
+	font-size: 20px;
+	margin-bottom: -120px;
 }

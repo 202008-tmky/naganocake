@@ -1,5 +1,4 @@
-<div class="container">
-	<dev class="row">
+<div class="item-index-box">
 
         <!-- ジャンル選択のサイドバー -->
 		<%= render "items/genres_sidebar", genres: @genres %>
@@ -23,9 +22,9 @@
             <h3>オススメ商品</h3>
             <table>
             	<tbody>
-            		<tr>
+            		<tr class="item-box">
             			<% @items.each do |item| %>
-                              <td><%= link_to item_path(item) do %>
+                              <td class="item"><%= link_to item_path(item) do %>
                               	  <%= attachment_image_tag(item, :image, size: "40×60", fallback:"top.image.jpg") %><br>
             			          <%= item.name %><br>
             			          ￥<%= item.price %>
@@ -39,5 +38,4 @@
             <!-- オススメ商品4つずつ表示 -->
 
         </div>
-    </div>
 </div>
