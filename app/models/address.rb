@@ -3,4 +3,7 @@ class Address < ApplicationRecord
 	def full_address
 		self.address + self.name
 	end
+
+	validates :customer_id, :name, :address, presence: true
+	validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
 end
