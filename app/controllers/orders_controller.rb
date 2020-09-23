@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
           @order.name = params[:order][:name]
       end
       @order.save
-
        if Address.find_by(address: @order.address).nil?
         @address = Address.new
         @address.postal_code = @order.postal_code
@@ -56,7 +55,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @cart_items = current_customer.cart_items
     @order.payment_method = params[:order][:payment_method]
-    @order.shipping_cost = 600
+    @order.shipping_cost = 800
     @add = params[:order][:add].to_i
     case @add
       when 1
