@@ -1,15 +1,11 @@
-<div class="container">
-	<div class="row">
-
-	<h4>マイページ</h4>
-
-
+	<h2>マイページ</h2>
+			<div class="customer-show">
 			<span><strong>登録情報</strong></span>
 		    <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-primary" %>
 		    <!-- パスワード編集画面への遷移ができない -->
 		    <%= link_to "パスワードを変更する", edit_customer_registration_path(@customer), class: "btn btn-primary" %>
-
-		    <table border="2">
+			</div>
+		    <table class="table  table-bordered">
 		    		<tr>
 		    			<th>氏名</th>
 		    			<td><%= @customer.first_name %>　<%= @customer.last_name %></td>
@@ -44,6 +40,3 @@
 		    <br>
 		    <span><strong>注文履歴</strong></span>
 		    <%= link_to "一覧を見る", orders_path(@customer), class: "btn btn-primary" %>
-		</div>
-	</div>
-</div>
