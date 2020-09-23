@@ -74,9 +74,6 @@ table.table table-striped table-bordered td
 	text-align: center;
 
 }
-td {
-text-align: center;
-}
 .box {
 	border: solid 3px;
 	width: 40%;
@@ -97,4 +94,7 @@ footer {
 	padding: 50px 0;
 	font-size: 20px;
 	margin-bottom: -120px;
+}
+.btn-link {
+	text-decoration: none;
 }
