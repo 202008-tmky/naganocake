@@ -1,4 +1,7 @@
 <div class="container">
+<%= flash.now[:success] %>
+<%= render "admins/shared/error_messages", resource: @items %>
+
     <div class="row">
 	<h1>商品新規登録</h1>
 	<%= form_for @items, url: admins_items_path do |f| %>
