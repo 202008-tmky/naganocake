@@ -1,2 +1,62 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<h3>注文履歴詳細</h3>
+
+<h4>購入者</h4>
+<%= @order.name %>
+
+<h4>配送先</h4>
+<%= @order.address %>
+
+<h4>郵便番号</h4>
+<%= @order.postal_code %>
+
+<h4>支払方法</h4>
+<%= @order.payment_method %>
+
+<h4>注文ステータス</h4>
+<%= form_with(model: @order, local: true, url:admins_order_path(@order)) do |f| %>
+    <%= f.select :status, Order.statuses.keys.to_a, include_blank: "-----" %>
+    <%= f.submit "変更する", class: 'btn btn-primary' %>
+<% end %>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>単価（税込）</th>
+			<th>数量</th>
+			<th>小計</th>
+			<th>制作ステータス</th>
+		</tr>
+	</thead>
+
+
+	<tbody>
+		<%= sum_all = 0 %>
+
+		<% @order.order_details.each do |detail| %>
+			<tr>
+				<td><%= detail.item.name %></td>
+				<td><%= (detail.price*1.1).to_i %></td>
+				<td><%= detail.amount %></td>
+				<td><%= (detail.price*1.1).to_i * detail.amount %>円</td>
+				<td>
+					<%= form_with model: detail, url: admins_order_detail_path(detail.id), method: :patch do |f| %>
+						<%= f.select :making_status, OrderDetail.making_statuses.keys.to_a %>
+						<%= f.submit "変更する", class: 'btn btn-primary' %>
+				<% end %>
+				</td>
+		<% end %>
+	
+	</tbody>
+</table>
+
+
+<h4>商品合計</h4>
+<%= @sum %>円
+
+<h4>送料</h4>
+<%= @order.shipping_cost %>円
+
+<h4>ご請求額</h4>
+ <%= @sum + @order.shipping_cost %>円

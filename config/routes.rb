@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'order_details/update'
   devise_for :admins, controllers: {sessions: "admins/sessions"}
 
   namespace :admins do

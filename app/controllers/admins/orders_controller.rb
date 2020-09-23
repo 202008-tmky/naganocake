@@ -6,6 +6,25 @@ class Admins::OrdersController < ApplicationController
   end
 
   def show
+     @order = Order.find(params[:id])
+     @sum = 0
+     @order.order_details.each do |detail|
+     @sum = @sum + ((detail.price*1.1).to_i * detail.amount)
+    end
+     @sum
   end
 
+
+  def update
+  	@order = Order.find(params[:id])
+  	@order.update(order_params)
+  	redirect_back(fallback_location: admins_order_path)
+  end
+
+private
+ def order_params
+ 	params.require(:order).permit(:created_at, :address, :name, :status, :payment_method, :postal_code, :shipping_cost, :total_payment,
+      order_details_attributes: [:order_id, :item_id, :amount, :price, :making_status])
+  end
 end
+
