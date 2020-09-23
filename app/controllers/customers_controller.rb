@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
   def update
   	@customer = current_customer
     @customer.update(customer_params)
-    edirect_to customer_path(@customer)
+    redirect_to customer_path(@customer)
   end
 
   def show
@@ -26,7 +26,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-  	params.require(:customer).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :is_deleted, :address, :postal_code, :address, :telephone_number, :is_deleted)
+  	params.require(:customer).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :is_deleted, :address, :postal_code, :address, :telephone_number, :is_deleted, :email )
   end
 
 end
