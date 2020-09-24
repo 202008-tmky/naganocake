@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'items/about' => 'items#about', as: 'customer_about'
   resources :items, only: [:index, :show]
 
+  resources :genres, only: [:show]
+
   resources :customers, only: [:edit, :show, :update]
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'customer_unsubscribe'
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
