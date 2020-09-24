@@ -35,6 +35,10 @@ class OrdersController < ApplicationController
         @address.save
       end
 
+      # if params[:order][:postal_code] == nil || params[:order][:address] == nil || params[:order][:name] == nil
+      #   render "new"
+      # end
+
       current_customer.cart_items.each do |cart_items|
         order_detail = @order.order_details.build
         order_detail.order_id = @order.id
@@ -51,6 +55,21 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    #注文情報にて新しいお届け先の入力が無い時エラー文
+    flash[:notice] = []
+    if params[:order][:postal_code] == nil
+      flash[:notice] << "郵便番号が入力されていません"
+    end
+    if params[:order][:address] == nil
+      flash[:notice] << "住所が入力されていません"
+    end
+    if params[:order][:name] == nil
+      flash[:notice] << "宛名が入力されていません"
+    end
+    if flash[:notice] && params[:order][:add] == "3"
+      redirect_to new_order_path
+    end
+
     @customer = current_customer
     @order = Order.new
     @cart_items = current_customer.cart_items

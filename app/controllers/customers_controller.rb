@@ -5,8 +5,12 @@ class CustomersController < ApplicationController
 
   def update
   	@customer = current_customer
-    @customer.update(customer_params)
-    redirect_to customer_path(@customer)
+    if @customer.update(customer_params)
+       flash[:success] = "登録情報を更新しました"
+       redirect_to customer_path(@customer)
+    else
+       render "edit"
+    end
   end
 
   def show
