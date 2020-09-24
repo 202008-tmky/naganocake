@@ -1,8 +1,7 @@
 <%= flash.now[:success] %>
 <%= render "admins/shared/error_messages", resource: @genre %>
-
 <div class="container">
-    <div class="row">
+	<div class="row">
 		<h1>ジャンル一覧・追加</h1>
 			　　<h3>ジャンル</h3>
 					<%= form_for @genre, url: admins_genres_path do |f| %>
@@ -34,5 +33,7 @@
 							<% end %>
 				        </tbody>
 					</table>
+
 	</div>
 </div>
+

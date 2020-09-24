@@ -1,8 +1,10 @@
+
+# 日時を日本時間に変更する
 ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
-
+      
   activerecord:
     models:
       address: 住所
@@ -40,3 +42,12 @@ ja:
       admin:
         email: メールアドレス
         password: パスワード
+
+# ページネーションのラベルを日本語に変更する。
+  views:
+    pagination:
+      first: "«"
+      last: "»"
+      previous: "‹"
+      next: "›"
+      truncate: "..."

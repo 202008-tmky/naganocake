@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'homes/top'
+    get '/search' => 'search#search'
     resources :customers,  only:[:index, :show, :edit, :update]
     resources :orders,  only:[:index, :show, :update]
     resources :order_details,  only:[:update]

@@ -20,8 +20,14 @@
                     <li class="nav-item"><%= link_to '注文履歴一覧', admins_orders_path %></li>
                     <li class="nav-item"><%= link_to 'ジャンル一覧', admins_genres_path %></li>
                     <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-                    <li class="nav-item1"><%= text_field_tag :search %>
-                    <%= submit_tag '検索' %></li>
+                    <li class="nav-item1">
+                    <%= form_tag(admins_search_path, method: :get) do %>
+                      <%= text_field_tag 'search[content]' %>
+                      <%= select_tag 'search[model]', options_for_select({ "顧客" => "customer", "商品" => "item" }) %>
+                      <%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
+                      <%= submit_tag '検索', class: "btn btn-primary" %>
+                    <% end %>
+                    </li>
                 <% elsif customer_signed_in? %>
                     <li class="nav-item"><%= link_to 'マイページ', customer_path(current_customer) %></li>
                     <li class="nav-item"><%= link_to '商品一覧', items_path %></li>

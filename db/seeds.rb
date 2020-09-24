@@ -10,61 +10,68 @@ Admin.create!(
 	password: 'testtest'
 	)
 
-50.times do |n|
-
-  Customer.create!(
-                   email: "test#{n + 1}@test.com",
-                   first_name: "文月#{n}",
-                   first_name_kana: "フミヅキ#{n}",
-                   last_name: "太郎#{n}",
-                   last_name_kana: "タロウ#{n}",
+Customer.create!(
+                   email: "test1@test.com",
+                   first_name: "長州",
+                   first_name_kana: "チョウシュウ",
+                   last_name: "力",
+                   last_name_kana: "リキ",
                    postal_code: "1111111",
-                   address: "横岡県氷川市絵向寺#{n}丁目",
+                   address: "横岡県氷川市絵向寺2丁目",
                    telephone_number: "11111111111",
                    is_deleted: false,
                    password: "111111",
                    password_confirmation: "111111",
                    )
-  Address.create!(
-                  customer_id: 1,
-                  name: "文月なな#{n}",
-                  postal_code: '1111111',
-                  address: '三橋県東里見町松林2-15-#{n}'
-                   )
-   Genre.create!(
-                name: "ジャンルその#{n}",
-                is_active: true
-                )
+
+Genre.create!(
+  [
+    {
+      id: 1,
+      name: 'チョコレート',
+      is_active: true
+    },
+
+    {
+      id: 2,
+      name: 'ケーキ',
+      is_active: true
+    },
+
+    {
+      id: 3,
+      name: 'クッキー',
+      is_active: true
+    },
+  ]
+  )
    Item.create!(
-                  name: "自家製パン#{n}",
-                  introduction: "#{n}倍美味しくなりました！（当社比）",
+   	[
+   				{
+                  name:"生チョコレート",
+                  introduction: "自家製のチョコレートに生クリームを混ぜ合わせ作りました",
                   genre_id: 1,
-                  price: 260,
+                  price: 360,
                   is_active: true,
-                  image: open("./app/assets/images/anpan.jpg")
-                   )
-   Order.create!(
-				    customer_id: 1,
-				    postal_code: "111111",
-				    address: "遊明県鳥窪町",
-				    name: "文月花子#{n}",
-				    shipping_cost: 600,
-				    total_payment: 3000,
-				    status: 1,
-				    payment_method: 1,
-    				)
-     OrderDetail.create!(
-				    order_id: 1,
-				    item_id: 1,
-				    price:600,
-				    amount:4,
-				    making_status: 1,
-    				)
+                  image: open("./app/assets/images/choco2.jpg")
+                 },
 
-end
-	CartItem.create!(
-   					customer_id: 1,
-   					item_id: 1,
-   					amount: 4,
-   					)
+                {
+                  name:"シフォンケーキ",
+                  introduction: "国産の卵使用し、ふっくら仕上げました",
+                  genre_id: 2,
+                  price: 650,
+                  is_active: true,
+                  image: open("./app/assets/images/cake.jpg")
+                 },
 
+                 {
+                  name:"ぴえんクッキー",
+                  introduction: "カリカリに仕上げました",
+                  genre_id: 3,
+                  price: 250,
+                  is_active: true,
+                  image: open("./app/assets/images/cokkie.jpg")
+                  },
+	]
+  	)
