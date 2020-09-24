@@ -1,6 +1,17 @@
 <div class="col-lg-10 offset-1 space">
   <div class="row">
     <div class="col-lg-4">
+
+  <% if flash[:notice] %>
+  <% flash[:notice].each do |f| %>
+    <p><%= f %></p>
+  <% end %>
+  <% end %>
+
+　<!-- カート内に商品が歩かないかの確認 -->
+<% if current_customer.cart_items.present? %>
+  <%= render "customers/shared/error_messages", resource: @order %>
+
       <h2>注文情報入力</h2>
     </div>
   </div>
@@ -81,6 +92,11 @@
       <%= f.submit "確認画面へ進む", class: "btn btn-danger"%>
     </div>
   </div>
-
   <% end %>
+<% else %>
+      <!-- カートにアイテムがない場合の遷移 -->
+      <p>カート内に商品がないため、ご注文ができません。</p>
+      <p><%= link_to "商品一覧", items_path %>からご注文をお待ちしています。</p>
+<% end %>
+
 </div>

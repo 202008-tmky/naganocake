@@ -1,4 +1,12 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              blank: "が空になっています"
 
 en:
   devise:
