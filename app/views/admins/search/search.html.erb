@@ -1,0 +1,22 @@
+<% if @model == "customer" %>
+  <h2>顧客</h2>
+   <% @datas.each do |datas| %>
+   <table class="table">
+   <tr>
+   <td><%=link_to datas.first_name + datas.last_name, admins_customer_path(datas) %></td>
+   </tr>
+   </table>
+   <% end %>
+
+<% elsif @model == "item"%>
+
+    <h2>商品</h2>
+	<% @datas.each do |datas| %>
+	 <table class="table">
+     <tr>
+     <td><%=link_to datas.name, admins_item_path(datas)%></td>
+     </tr>
+     </table>
+     <% end %>
+<% else %>
+<% end %>
