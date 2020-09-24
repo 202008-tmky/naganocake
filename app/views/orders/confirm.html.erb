@@ -33,7 +33,7 @@
         <%= cart_item.amount %>
       </td>
       <td>
-        <%= sum_item = cart_item.item.price*1.1.to_i * cart_item.amount %>円
+        <%= sum_item = (cart_item.item.price*1.1).to_i * cart_item.amount %>円
         <% sum_all += sum_item %>
       </td>
         </tr>

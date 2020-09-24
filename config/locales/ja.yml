@@ -1,4 +1,15 @@
+
+# 日時を日本時間に変更する
 ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+
+# ページネーションのラベルを日本語に変更する。
+  views:
+    pagination:
+      first: "«"
+      last: "»"
+      previous: "‹"
+      next: "›"
+      truncate: "..."
