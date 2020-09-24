@@ -1,30 +1,43 @@
 <div class="container">
+
 <%= flash.now[:success] %>
 <%= render "admins/shared/error_messages", resource: @items %>
 
     <div class="row">
-	<h1>商品新規登録</h1>
-	<%= form_for @items, url: admins_items_path do |f| %>
-		<div class="col-xs-5">
-			  <%= f.attachment_field :image %>
-		 </div>
+	<h2>商品新規登録</h2>
+	<div class="col-lg-4" style="margin-top: 200px;">
+		<%= form_for @items, url: admins_items_path do |f| %>
+		<%= f.attachment_field :image %>
+	</div>
 
-      	<div class="col-xs-7">
-			        <h3>商品名</h3>
-					<%= f.text_field :name %>
-					<h3>商品説明</h3>
-					<%= f.text_field :introduction %>
-					<h3>ジャンル</h3>
-					<%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %>
-
-					<h3>税抜価格</h3>
-					<%= f.text_field :price %>
-					<h3>販売ステータス</h3>
-					<%= f.select :is_active, [["販売中", "true"], ["売り切れ", "false"]], include_blank: "選択して下さい" %>
-					<br><%= f.submit '新規登録', class:"btn btn-primary" %></br>
-
+      	<div class="col-xs-6">
+      		<table class="table">
+      				<tr>
+      					<th style="border-style: none;">商品名</th>
+      					<td style="border-style: none;"><%= f.text_field :name %></td>
+      				</tr>
+      				<tr>
+      					<th style="border-style: none;">商品説明</th>
+      					<td style="border-style: none;"><%= f.text_area :introduction %></td>
+      				</tr>
+      				<tr>
+      					<th style="border-style: none;">ジャンル</th>
+      					<td style="border-style: none;"><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %></td>
+      				</tr>
+      				<tr>
+      					<th style="border-style: none;">税抜価格</th>
+      					<td style="border-style: none;"><%= f.text_field :price %></td>
+      				</tr>
+      				<tr>
+      					<th style="border-style: none;">販売ステータス</th>
+      					<td style="border-style: none;"><%= f.select :is_active, [["販売中", "true"], ["売り切れ", "false"]], include_blank: "選択して下さい" %>
+      					</td>
+      				</tr>
+      		</table>
+		</div>
+		<div class="col-xs-2" style="margin-top: 200px;">
+			<%= f.submit '新規登録', class:"btn btn-primary" %>
 		</div>
 	<% end %>
 	</div>
 </div>
-
