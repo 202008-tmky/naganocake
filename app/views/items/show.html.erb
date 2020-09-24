@@ -4,7 +4,7 @@
 	</div>
 	<div class="col-lg-9">
 	<div class="item-show-box">
-	<%= attachment_image_tag(@item, :image, size: "60×60", fallback: "no_image.jpg") %>
+	<%= attachment_image_tag(@item, :image, :fill, 300, 300, fallback: "no_image.jpg") %>
 	<div class="item-show">
 	<h2><%= @item.name %></h2>
 	<p><%= @item.introduction %></p>
