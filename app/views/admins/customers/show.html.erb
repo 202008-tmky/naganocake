@@ -1,13 +1,10 @@
 <div class="row">
 		<div class="col-lg-2"></div>
 
-  <br>
-
+<div class="col-lg-8">
   <h3><%= @customer.last_name + @customer.first_name + "さんの会員詳細" %> </h3>
-
-    <div class="row">
-		<div class="col-lg-8">
-			<table class="table table-borderless">
+  <br>
+			<table class="table">
 
 				<tr>
 					<td>顧客ID</td>
@@ -47,12 +44,11 @@
 					<td><%=@customer.email %></td>
 				</tr>
 			</table>
-		</div>
 
-            <div>
                 <%= link_to "編集する", edit_admins_customer_path(@customer), class:"btn btn-primary" %>
-                <%= link_to "注文履歴を見る", admins_orders_path(@customer),  class:"btn btn-primary" %>
+                <%= link_to "注文履歴を見る", admins_orders_path(@customer), class:"btn btn-primary" %>
             </div>
+
 
 </div>
 

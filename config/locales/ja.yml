@@ -4,6 +4,44 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+      
+  activerecord:
+    models:
+      address: 住所
+      customer: 顧客情報
+      genre: ジャンル
+      item: 商品
+      order: 注文
+      admin: 管理
+    attributes:
+      address:
+        name: 氏名
+        postal_code: 郵便番号
+        address: 住所
+      customer:
+        email: メールアドレス
+        first_name: （姓）氏名
+        first_name_kana: （セイ）
+        telephone_number: 電話番号
+        postal_code: 郵便番号
+        address: 住所
+        last_name: （名）氏名
+        last_name_kana: （メイ）
+      genre:
+        name: ジャンル名
+      item:
+        name: 商品名
+        introduction: 商品説明
+        price: 税抜価格
+        genre: ジャンル名
+        image: 商品画像
+      order:
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛名
+      admin:
+        email: メールアドレス
+        password: パスワード
 
 # ページネーションのラベルを日本語に変更する。
   views:
