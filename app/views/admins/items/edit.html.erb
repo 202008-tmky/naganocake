@@ -1,23 +1,48 @@
 <%= flash.now[:success] %>
 <%= render "admins/shared/error_messages", resource: @item %>
+<div class="container">
+	<div class="row">
+		<h3>商品編集</h3>
+		<br>
 
-<h2>商品編集</h2>
+	<%= form_for @item, url: admins_item_path do |f| %>
+			<div class="col-lg-4">
+				<div class="item-edit-image">
+					<%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
+				</div>
+			　　 <%= f.attachment_field :image, placeholder: "商品画像" %>
+		    </div>
+		<br>
+			<div class="col-lg-8">
+				<table class="table">
+					<tr>
+						<td>商品名</td>
+						<td><%= f.text_field :name, class:"form-control" %></td>
+					</tr>
+					<tr>
+						<td>商品説明</td>
+						<td><%= f.text_area :introduction, class:"form-control" %></td>
+					</tr>
+					<tr>
+						<td>ジャンル</td>
+						<td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true, class:"form-control" %></td>
+					</tr>
+					<tr>
+						<td>税抜価格</td>
+						<td><%= f.text_field :price, class:"form-control" %></td>
+					</tr>
+					<tr>
+						<td>販売ステータス</td>
+						<td><%= f.select :is_active ,[['有効',true],['無効',false]] %></td>
+					</tr>
+				</table>
+			</div>
+		<br>
 
-<%= form_for @item, url: admins_item_path do |f| %>
-	<div class="item-edit-image">
-		<%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "no_image.jpg"%>
+			<div style="float: right" >
+				<%= f.submit "変更を保存", class: "btn btn-primary" %>
+			</div>
+	<% end %>
+
 	</div>
-	<%= f.attachment_field :image, placeholder: "商品画像" %>
-	<h5>商品名</h5>
-	<%= f.text_field :name %>
-	<h5>商品説明</h5>
-	<%= f.text_area :introduction %>
-	<h5>ジャンル</h5>
-	<%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => true %>
-	<h5>税抜価格</h5>
-	<%= f.text_field :price %>
-	<h5>販売ステータス</h5>
-	<%= f.select :is_active ,[['有効',true],['無効',false]] %>
-
-	<%= f.submit "変更を保存" %>
-<% end %>
+</div>
