@@ -1,7 +1,8 @@
-<%= flash.now[:success] %>
-<%= render "admins/shared/error_messages", resource: @item %>
+
 
 <h2>商品編集</h2>
+<%= flash.now[:success] %>
+<%= render "admins/shared/error_messages", resource: @item %>
 
 <%= form_for @item, url: admins_item_path do |f| %>
 	<div class="item-edit-image">
