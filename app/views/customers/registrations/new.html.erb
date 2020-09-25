@@ -1,57 +1,57 @@
-<body>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-11">
     <h2>新規会員登録</h2>
-
+    <%= render "customers/shared/error_messages", resource: resource %>
 <!-- フォーム部分 -->
-
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "customers/shared/error_messages", resource: resource %>
-     　<div>
+     　<div class="field col-xs-12">
         <%= f.label :"名前" %>
         <%= f.label :"(姓)" %>
         <%= f.text_field :first_name, autofocus: true %>
         <%= f.label :"(名)" %>
         <%= f.text_field :last_name, autofocus: true %>
       </div>
-      <div>
+      <div class="field col-xs-12">
         <%= f.label :"フリガナ" %>
         <%= f.label :"(セイ)" %>
         <%= f.text_field :last_name_kana, autofocus: true %>
         <%= f.label :"(メイ)" %>
         <%= f.text_field :first_name_kana, autofocus: true %>
       </div>
-	   <div>
-		<%= f.label :"メールアドレス" %>
-	　　 <%= f.email_field :email, autofocus: true %>
-	  </div>
-      <div>
+	    <div class="field col-xs-12">
+		    <%= f.label :"メールアドレス" %>
+	　　   <%= f.email_field :email, autofocus: true %>
+	    </div>
+      <div class="field col-xs-12">
         <%= f.label :"郵便番号(ハイフンなし)" %>
         <%= f.text_field :postal_code, autofocus: true %>
       </div>
-      <div>
+      <div class="field col-xs-12">
         <%= f.label :"住所" %>
         <%= f.text_field :address, autofocus: true %>
       </div>
+      <div class="field col-xs-12">
         <%= f.label :"電話番号(ハイフンなし)" %>
         <%= f.text_field :telephone_number, autofocus: true %>
-
-      <div>
+      </div>
+      <div class="field col-xs-12">
         <%= f.label :"パスワード(6文字以上)" %>
         <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
-      <div>
+      <div class="field col-xs-12">
         <%= f.label :"パスワード(確認用)" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
-      <div>
+      <div class="col-xs-12">
         <%= f.submit "新規登録" %>
       </div>
     <% end %>
     <!-- フォームここまで -->
-
-    <div>
+    <div class="col-xs-12">
       <h2>既に登録済みの方</h2>
       <p><%= link_to "こちら", customer_session_path %> からログインしてください。</p>
     </div>
+    </div>
   </div>
 </div>
-</body>

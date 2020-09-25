@@ -1,9 +1,7 @@
-<div class="container">
-
-<%= flash.now[:success] %>
-<%= render "admins/shared/error_messages", resource: @items %>
     <div class="row">
 	<h2>商品新規登録</h2>
+  <%= flash.now[:success] %>
+  <%= render "admins/shared/error_messages", resource: @items %>
 	<div class="col-lg-4" style="margin-top: 200px;">
 		<%= form_for @items, url: admins_items_path do |f| %>
 		<%= f.attachment_field :image %>
