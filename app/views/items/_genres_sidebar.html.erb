@@ -3,7 +3,7 @@
 
     <% genres.each do |genre| %>
     <table class="table table-striped table-bordered">
-       <td><%= link_to genre.name, items_path(genre_id: genre.id) %></td>
+       <td><%= link_to genre.name, genre_path(genre.id) %></td>
 	</table>
 	<% end %>
 	</div>
