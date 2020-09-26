@@ -53,7 +53,7 @@ class AddressesController < ApplicationController
 
     private
     def shipping_address_params
-        params.require(:address).permit(:name, :postal_code, :address, :customer_id)
+        params.require(:address).permit(:name, :postal_code, :address)
     end
 
 end

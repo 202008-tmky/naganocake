@@ -35,25 +35,6 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    #注文情報にて新しいお届け先の入力が無い時エラー文
-      flash[:notice] = []
-    if params[:order][:new_add][:postal_code] == ""
-      flash[:notice] << "郵便番号が入力されていません"
-    end
-    if params[:order][:new_add][:address] == ""
-      flash[:notice] << "住所が入力されていません"
-    end
-    if params[:order][:new_add][:name] == ""
-      flash[:notice] << "宛名が入力されていません"
-    end
-    if params[:order][:address_id].to_i == 0
-     flash[:notice] << "選択して下さい"
-    end
-
-    if !flash[:notice].empty? && params[:order][:add] == "3"
-      redirect_to new_order_path
-    else
-    end
     @customer = current_customer
     @order = Order.new
     @cart_items = current_customer.cart_items
@@ -66,16 +47,36 @@ class OrdersController < ApplicationController
         @order.address = @customer.address
         @order.name = @customer.first_name + @customer.last_name
       when 2
-        @sta = params[:order][:address_id].to_i
-        @address = Address.find(@sta)
-        @order.postal_code = @address.postal_code
-        @order.address = @address.address
-        @order.name = @address.name
+        if params[:order][:address_id] ==  ""
+         flash[:notice] = "選択して下さい"
+         redirect_to new_order_path
+        else
+          @sta = params[:order][:address_id].to_i
+          @address = Address.find(@sta)
+          @order.postal_code = @address.postal_code
+          @order.address = @address.address
+          @order.name = @address.name
+        end
       when 3
-        @order.postal_code = params[:order][:new_add][:postal_code]
-        @order.address = params[:order][:new_add][:address]
-        @order.name = params[:order][:new_add][:name]
-    end
+        if    params[:order][:new_add][:postal_code] == "" && params[:order][:new_add][:address] == "" && params[:order][:new_add][:name] == ""
+              flash[:notice] = "新しいお届け先が全て入力されていません"
+              redirect_to new_order_path
+        elsif params[:order][:new_add][:postal_code] == ""
+              flash[:notice] = "郵便番号が入力されていません"
+              redirect_to new_order_path
+
+        elsif params[:order][:new_add][:address] == ""
+              flash[:notice] = "住所が入力されていません"
+              redirect_to new_order_path
+        elsif params[:order][:new_add][:name] == ""
+              flash[:notice] = "宛名が入力されていません"
+              redirect_to new_order_path
+        else
+            @order.postal_code = params[:order][:new_add][:postal_code]
+            @order.address = params[:order][:new_add][:address]
+            @order.name = params[:order][:new_add][:name]
+        end
+      end
 
 
   end
