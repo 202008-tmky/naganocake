@@ -35,6 +35,22 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    #注文情報にて新しいお届け先の入力が無い時エラー文
+    flash[:notice] = []
+    if params[:order][:new_add][:postal_code] == ""
+      flash[:notice] << "郵便番号が入力されていません"
+    end
+    if params[:order][:new_add][:address] == ""
+      flash[:notice] << "住所が入力されていません"
+    end
+    if params[:order][:new_add][:name] == ""
+      flash[:notice] << "宛名が入力されていません"
+    end
+    if !flash[:notice].empty? && params[:order][:add] == "3"
+      redirect_to new_order_path
+    else 
+    end
+
     @customer = current_customer
     @order = Order.new
     @cart_items = current_customer.cart_items
