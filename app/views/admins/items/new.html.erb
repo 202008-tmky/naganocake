@@ -1,10 +1,10 @@
-<div class="container">
-
-<%= flash.now[:success] %>
-<%= render "admins/shared/error_messages", resource: @items %>
     <div class="row">
 	<h2>商品新規登録</h2>
-	<div class="col-lg-4">
+
+  <%= flash.now[:success] %>
+  <%= render "admins/shared/error_messages", resource: @items %>
+	<div class="col-lg-4" style="margin-top: 200px;">
+
 		<%= form_for @items, url: admins_items_path do |f| %>
 		<%= attachment_image_tag @item, :image, fallback: "no_itemimage.jpg", id: "img_prev", style: "height: 200px; width:200px;" %><br>
 		<%= f.attachment_field :image %>

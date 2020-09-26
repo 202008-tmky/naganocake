@@ -1,10 +1,9 @@
 <body>
-<%= flash.now[:success] %>
-<%= render "customers/shared/error_messages", resource: @shipping_address %>
 <div>
   <!-- 編集フォーム-->
   <h2>配送先編集</h2>
-
+  <%= flash.now[:success] %>
+  <%= render "customers/shared/error_messages", resource: @shipping_address %>
   <%= form_for(@shipping_address) do |f| %>
     <table>
       <tr>

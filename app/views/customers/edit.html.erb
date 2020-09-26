@@ -1,9 +1,7 @@
-<%= flash.now[:success] %>
-<%= render "customers/shared/error_messages", resource: @customer %>
-
 <div class="container">
     <div class="row">
     	<h1>登録情報編集</h1>
+        <%= render "customers/shared/error_messages", resource: @customer %>
     </div>
         <div class='row'>
     	<%= form_for (@customer) do |f| %>
@@ -26,10 +24,10 @@
 			</div>
 			 <div class='col-lg-8'>
         		<span style='display: inline-block;'>
-					(セイ)<%= f.text_field :first_name_kana %> %>
+					(セイ)<%= f.text_field :first_name_kana %>
 				</span>
 				<span style='display: inline-block;'>
-					(メイ)<%= f.text_field :last_name_kana %> %>
+					(メイ)<%= f.text_field :last_name_kana %>
 			</span>
 		</div>
 

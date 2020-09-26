@@ -1,6 +1,3 @@
-<%= flash.now[:success] %>
-<%= render "admins/shared/error_messages", resource: @customer %>
-
 <div class="container">
 	<div class="row">
 		<div class="col-lg-2"></div>
@@ -8,6 +5,7 @@
 		<div class="col-lg-8">
 		<h3><%= @customer.last_name + @customer.first_name + "さんの会員情報編集" %> </h3>
 		<br>
+    <%= render "admins/shared/error_messages", resource: @customer %>
 		<%= form_for @customer, url: admins_customer_path do |f| %>
 			<table class="table">
 				<tr>
