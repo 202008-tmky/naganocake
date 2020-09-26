@@ -27,7 +27,7 @@ class Admins::GenresController < ApplicationController
       	   redirect_to admins_genres_path
           if @genre.is_active == false
             @genre.items.each do |item|
-            item.is_sale = false
+            item.is_active = false
             item.save
             end
           end

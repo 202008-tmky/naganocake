@@ -49,6 +49,7 @@ class OrdersController < ApplicationController
     if params[:order][:address_id].to_i == 0
      flash[:notice] << "選択して下さい"
     end
+
     if !flash[:notice].empty? && params[:order][:add] == "3"
       redirect_to new_order_path
     else
