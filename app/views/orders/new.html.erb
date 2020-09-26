@@ -1,18 +1,6 @@
 <div class="col-lg-10 offset-1 space">
   <div class="row">
-    <div class="col-lg-4">
-　<!-- カート内に商品が歩かないかの確認if文　最後で分岐 -->
-  <% if current_customer.cart_items.present? %>
-        </div>
-      </div>
 　　　<h2>注文情報入力</h2>
-  <!-- 新しいお届け先の入力が無い時のエラー表示 -->
-      <% if flash[:notice] %>
-      <% flash[:notice].each do |f| %>
-      <p><%= f %></p>
-      <% end %>
-      <% end %>
-
       <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 
       <!-- 支払方法 -->
@@ -42,7 +30,7 @@
       <div class="row space-sm">
         <p>
           <label><%= f.radio_button :add, 2, style: "display: inline-block" %>登録住所から選択</label><br>
-          <%= f.collection_select :address_id, Address.all, :id, :full_address, :include_blank => "選択してください" %>
+          <%= f.collection_select :address_id, @customer.addresses, :id, :full_address, :include_blank => "選択してください" %>
         </p>
       </div>
 
@@ -82,7 +70,6 @@
           <% end %>
         </div>
       </div>
-      <!-- お届け先ここまで -->
 
       <div class="row space">
         <div class="col-lg-2 offset-lg-7">
@@ -90,10 +77,5 @@
         </div>
       </div>
       <% end %>
-  <% else %>
-        <!-- カートにアイテムがない場合の遷移 -->
-        <p>カート内に商品がないため、ご注文ができません。</p>
-        <p><%= link_to "商品一覧", items_path %>からご注文をお待ちしています。</p>
-  <% end %>
 
 </div>
