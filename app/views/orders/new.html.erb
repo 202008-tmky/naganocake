@@ -1,6 +1,11 @@
 <div class="col-lg-10 offset-1 space">
   <div class="row">
 　　　<h2>注文情報入力</h2>
+      <% if flash[:notice] %>
+      <% flash[:notice].each do |f| %>
+      <p><%= f %></p>
+      <% end %>
+      <% end %>
       <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 
       <!-- 支払方法 -->
@@ -40,6 +45,7 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
+
           <%= f.fields_for :new_add do |na| %>
           <div class="row">
             <div class="col-lg-3">
