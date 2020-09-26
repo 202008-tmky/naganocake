@@ -29,7 +29,7 @@
       				</tr>
       				<tr>
       					<th style="border-style: none;">販売ステータス</th>
-      					<td style="border-style: none;"><%= f.select :is_active, [["販売中", "true"], ["売り切れ", "false"]], include_blank: "選択して下さい" %>
+      					<td style="border-style: none;"><%= f.select :is_active, [["販売中", "true"], ["販売停止中", "false"]], include_blank: "選択して下さい" %>
       					</td>
       				</tr>
       		</table>
