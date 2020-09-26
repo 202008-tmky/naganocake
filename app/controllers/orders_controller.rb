@@ -1,30 +1,13 @@
 class OrdersController < ApplicationController
   def new
-        @order = Order.new
-     @customer = current_customer
+      @order = Order.new
+      @customer = current_customer
   end
 
   def create
-     if current_customer.cart_items.exists?
+    if current_customer.cart_items.exists?
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
-
-      # 住所のラジオボタン選択に応じて引数を調整
-      @add = params[:order][:add].to_i
-      case @add
-        when 1
-          @order.postal_code = @customer.postal_code
-          @order.address = @customer.address
-          @order.name = @customer.first_name + @customer.last_name
-        when 2
-          @order.postal_code = params[:order][:postal_code]
-          @order.address = params[:order][:address]
-          @order.name = params[:order][:name]
-        when 3
-          @order.postal_code = params[:order][:postal_code]
-          @order.address = params[:order][:address]
-          @order.name = params[:order][:name]
-      end
       @order.save
        if Address.find_by(address: @order.address).nil?
         @address = Address.new
@@ -35,9 +18,6 @@ class OrdersController < ApplicationController
         @address.save
       end
 
-      # if params[:order][:postal_code] == nil || params[:order][:address] == nil || params[:order][:name] == nil
-      #   render "new"
-      # end
 
       current_customer.cart_items.each do |cart_items|
         order_detail = @order.order_details.build
@@ -93,6 +73,7 @@ class OrdersController < ApplicationController
         @order.address = params[:order][:new_add][:address]
         @order.name = params[:order][:new_add][:name]
     end
+
   end
 
   def thanks
