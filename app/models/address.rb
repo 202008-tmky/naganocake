@@ -5,8 +5,7 @@ class Address < ApplicationRecord
 	end
 
 	validates :customer_id, :name, presence: true
-	 validates :address_id, presence: true
-	 validates :address, presence: true, if: -> { address_id.present? }
+	 validates :address, presence: true
 
 	validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
 end

@@ -2,9 +2,7 @@
   <div class="row">
 　　　<h2>注文情報入力</h2>
       <% if flash[:notice] %>
-      <% flash[:notice].each do |f| %>
-      <p><%= f %></p>
-      <% end %>
+      <p><%= flash[:notice] %></p>
       <% end %>
       <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 
@@ -30,7 +28,6 @@
           <%= @customer.first_name + @customer.last_name %>
         </p>
       </div>
-
       <!-- 登録済み住所 -->
       <div class="row space-sm">
         <p>
