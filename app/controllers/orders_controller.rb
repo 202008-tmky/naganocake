@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
 
   def confirm
     #注文情報にて新しいお届け先の入力が無い時エラー文
-    flash[:notice] = []
+      flash[:notice] = []
     if params[:order][:new_add][:postal_code] == ""
       flash[:notice] << "郵便番号が入力されていません"
     end
@@ -46,10 +46,14 @@ class OrdersController < ApplicationController
     if params[:order][:new_add][:name] == ""
       flash[:notice] << "宛名が入力されていません"
     end
-    if !flash[:notice].empty? && params[:order][:add] == "3"
-      redirect_to new_order_path
+    if params[:order][:address_id].to_i == 0
+     flash[:notice] << "選択して下さい"
     end
 
+    if !flash[:notice].empty? && params[:order][:add] == "3"
+      redirect_to new_order_path
+    else
+    end
     @customer = current_customer
     @order = Order.new
     @cart_items = current_customer.cart_items
@@ -72,6 +76,8 @@ class OrdersController < ApplicationController
         @order.address = params[:order][:new_add][:address]
         @order.name = params[:order][:new_add][:name]
     end
+
+
   end
 
   def thanks
