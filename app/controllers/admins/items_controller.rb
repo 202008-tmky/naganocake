@@ -9,14 +9,14 @@ class Admins::ItemsController < ApplicationController
   end
 
   def new
-  	@items = Item.new
+  	@item = Item.new
   end
 
   def create
-  	@items = Item.new(item_params)
-    if @items.save
+  	@item = Item.new(item_params)
+    if @item.save
        flash[:success] = "新規商品を登録しました"
-       redirect_to admins_item_path(@items)
+       redirect_to admins_item_path(@item)
     else
        render "new"
     end
