@@ -1,16 +1,16 @@
 class ItemsController < ApplicationController
 
   def top
-  	@genres = Genre.all
-  	@items = Item.all.page(params[:page]).per(4)
+  	@genres = Genre.all.where(is_active: true)
+  	@items = Item.where(is_active: true).page(params[:page]).per(4)
   end
 
   def about
   end
 
   def index
-  	@genres = Genre.all
-  	@items = Item.all.page(params[:page]).per(8)
+  	@genres = Genre.all.where(is_active: true)
+  	@items = Item.where(is_active: true).page(params[:page]).per(8)
   end
 
   def show
