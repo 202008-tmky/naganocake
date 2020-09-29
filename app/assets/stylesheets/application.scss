@@ -20,6 +20,7 @@
   padding: 0;
   box-sizing: border-box;
   color: #6c6b6b;
+  font-family: cursive;
 }
 .clearfix::after {
   content: "";
@@ -30,6 +31,24 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.nav-bar-link {
+	text-decoration: none;
+    color: white;
+}
+.header-logo {
+	text-decoration: none;
+    color: white;
+    font-family: cursive;
+}
+.container-fluid {
+	background-color: #660000;
+	height: 80px;
+}
+.top-image {
+	width: 100%;
+}
+
 .wrapper {
 	 min-height: 100vh;/*①高さの最小値*/
   	 position: relative;/*②相対位置*/
@@ -86,14 +105,18 @@ table.table table-striped table-bordered td
 }
 footer {
 	width: 100%;
-	height:120px;
-	position:absolute;
+	height: 100px;
+	position: absolute;
 	bottom:0;
 	text-align: center;
-	background-color:#FFFFEE;
-	padding: 50px 0;
+	background-color: #660000;
+	color: white;
+	padding: 40px 0;
 	font-size: 20px;
 	margin-bottom: -120px;
+}
+.footer-p {
+	color: white;
 }
 .btn-link {
 	text-decoration: none;
